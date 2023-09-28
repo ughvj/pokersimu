@@ -1,8 +1,6 @@
 import java.util.Random;
 
 class Poker {
-
-
     public static void main(String[] args) {
         int c = 0;
         while (true) {
@@ -19,7 +17,7 @@ class Poker {
                 System.out.print(hand[i].Serialize() + " ");
             }
 
-            String result = HandInspector.inspect(hand);
+            String result = HandInspector.Inspect(hand);
             System.out.print("\n" + result + "\n");
 
             if (result.equals("straight flash")) {
@@ -33,11 +31,6 @@ class Poker {
 class Card {
     public int n;
     public int s;
-
-    public static final int CLOVER = 0;
-    public static final int DIAMOND = 1;
-    public static final int HEART = 2;
-    public static final int SPADE = 3;
 
     public Card(int n, int s) {
         this.n = n;
@@ -56,7 +49,7 @@ class Deck {
     
     public Deck() {
         this.head_point = 0;
-        this.cards = new Card[52]; // except joker
+        this.cards = new Card[52];
         for (int n=0; n<13; n++) {
             for (int s=0; s<4; s++) {
                 cards[n + s * 13] = new Card(n+1, s);
@@ -81,7 +74,7 @@ class Deck {
 }
 
 class HandInspector {
-    public static String inspect(Card[] hand) {
+    public static String Inspect(Card[] hand) {
         int[] n = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         int[] s = {0, 0, 0, 0};
 
